@@ -1,0 +1,30 @@
+{
+  "name": "skgcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "tunnel": "ngrok http 8000"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "actions-on-google": "^2.12.0",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.0",
+    "cors": "^2.8.5",
+    "dialogflow": "^0.12.1",
+    "dialogflow-fulfillment": "^0.6.1",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "joi": "^14.3.1",
+    "mysql": "^2.17.1",
+    "ngrok": "^3.2.5",
+    "structjson": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
