@@ -1,1 +1,2 @@
-# housecat_v2
+# housecat-skgcode-API
+API part for HouseCat
