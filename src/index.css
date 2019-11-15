@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  font-family: "Old Standard TT", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: white;
+}
+
+#title {
+  text-align: center;
+  font-size: 80px;
+  font-family: "Amatic SC", cursive;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
