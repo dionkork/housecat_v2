@@ -5,7 +5,7 @@
 .popup {
   position: sticky;
   bottom: 0;
-  margin-left: 1300px;
+  margin-left: 1200px;
   cursor: pointer;
   outline: black;
   -webkit-user-select: none;
@@ -64,8 +64,7 @@
   color: white;
 }
 .container {
-  
-  padding: 0 ;
+  padding: 0;
   display: flex;
   flex-direction: row;
 }
@@ -77,22 +76,50 @@
   text-align: center;
   width: auto;
   padding: 0;
-  margin:5rem; 
+  margin: 5rem;
   display: block;
-
 }
-.item-1{
+.item-1 {
   flex-grow: 0.5;
 }
-.item-2{
+.item-2 {
   flex-grow: 2;
 }
 
 .lastHousesBox {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 .lastHouseText {
   margin-top: 50px;
-  font-family: 'Kalam', cursive;
   font-size: 50px;
+}
+.homePageStyle {
+  margin-top: 200px;
+  margin-bottom: 200px;
+  font-size: 20px;
+  align-self: center;
+  width: 99%;
+}
+.homePageStyle > p,
+cite {
+  font-size: 25px;
+}
+.filterBox {
+  width: 25%;
+  position: sticky;
+  top: 0;
+  margin-bottom: 200px;
+}
+.checkboxes {
+  margin-left: 60px;
+  font-size: 18px;
+}
+.dropdownBox {
+  margin-top: 25px;
+  margin-left: 45px;
+  font-size: 18px;
+}
+.filterText {
+  margin-top: 50px;
+  font-size: 20px;
 }

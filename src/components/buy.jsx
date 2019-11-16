@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 
 class Buy extends Component {
-   
-    render() { 
-       return (
-        <div className="ToBuy">
-            <h1 > Our syggestions  </h1>           
-        </div>
-       );
+  render() {
+    return (
+      <div className="ToBuy">
+        <h1> Our syggestions </h1>
+      </div>
+    );
   }
 }
 

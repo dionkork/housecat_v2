@@ -5,12 +5,20 @@ class House extends Component {
   state = {
     houses: []
   };
-
+  /*
   componentDidMount() {
-    axios.get(`http://192.168.26.213:8000/properties`).then(res => {
-      const houses = res.data;
+    axios.get(`http://localhost:8000/api/properties`).then(res => {
+      let filteringResults = res.data;
+      localStorage.setItem("searchdata", JSON.stringify(filteringResults));
+      var houses = JSON.parse(localStorage.getItem("searchdata"));
+      //const houses = res.data;
       this.setState({ houses });
     });
+  }
+  */
+  componentDidMount(){
+   var houses = JSON.parse(localStorage.getItem("searchdata")); 
+   this.setState({ houses });
   }
 
   render() {
