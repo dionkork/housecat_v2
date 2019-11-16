@@ -44,8 +44,6 @@ app.get('/api',(req,res) => {
 
 // Returns the userType defined by the chatbot
 app.get('/api/usertype',(req,res) => {
-    
-    //res.send
     if (dialogflowapp.user_type==='landlord'){
         res.send({userType: "Landlord"});
     }else if (dialogflowapp.user_type==='renter'){
@@ -106,26 +104,19 @@ app.get('/api/properties/saletype=:saletype',(req,res) => {
     });
 });
 
-app.get('/api/properties/id=:id',(req,res) => {
-    con.query(`SELECT * FROM properties WHERE id=${parseInt(req.params.id)}`, function (err, result, fields) {
-        if (err) throw err;
-        if(isEmptyObject(result)) return res.status(404).send('There is no property with this id');
-        res.send(result);
-    });
-});
-
 
 //Search results according to JSON received (with filters)
-app.get('/api/properties/search',(req,res) => {
+app.post('/api/properties/search',(req,res) => {
 
     var  searchJSON = req.body; // Copy POSTed JSON to a variable
 
     // Build SQL query. Question marks are replaced with valuesFromJSON table
-    var tempSqlquery1="SELECT * FROM properties WHERE (      ( (properties.id=?) OR (? IS NULL) ) AND ( (properties.price=?) OR (? IS NULL) ) AND ( (properties.sqm=?) OR (? IS NULL) ) AND ( (properties.location=?) OR (? IS NULL) )      ";
-    var tempSqlQuery2=" AND ( (properties.bedrooms=?) OR (? IS NULL) ) AND ( (properties.bathrooms=?) OR (? IS NULL) ) AND ( (properties.property_type=?) OR (? IS NULL) ) AND ( (properties.floor=?) OR (? IS NULL) )   "
+    var tempSqlquery1="SELECT * FROM properties WHERE (    ( (properties.id=?) OR (? IS NULL) ) AND ( (properties.price>=?) OR (? IS NULL) )  AND ( (properties.price<=?) OR (? IS NULL) ) AND ( (properties.sqm=?) OR (? IS NULL) ) AND ( (properties.location=?) OR (? IS NULL) )   ";
+    var tempSqlQuery2=" AND ( (properties.bedrooms=?) OR (? IS NULL) ) AND ( (properties.bathrooms=?) OR (? IS NULL) ) AND ( (properties.property_type=?) OR (? IS NULL) ) AND ( (properties.floor=?) OR (? IS NULL) )  AND ( (properties.sale_type=?) OR (? IS NULL) ) ";
+    var tempSqlQuery3="AND ( (properties.furnitured=?) OR (? IS NULL) ) AND ( (properties.heating_type=?) OR (? IS NULL) )  AND ( (properties.built_year>=?) OR (? IS NULL) ) AND ( (properties.built_year<=?) OR (? IS NULL) ) AND ( (properties.parking=?) OR (? IS NULL) ) ";
     var telikiParenthesi=")"; // It's good to leave this parenthesis as a unique string in order to avoid syntax errors
 
-    var finalSqlQuery = tempSqlquery1.concat(tempSqlQuery2,telikiParenthesi); // Join the above 3 parts of SQL query ;
+    var finalSqlQuery = tempSqlquery1.concat(tempSqlQuery2,tempSqlQuery3,telikiParenthesi); // Join the above 3 parts of SQL query ;
 
     var valuesFromJSON=[];
 
