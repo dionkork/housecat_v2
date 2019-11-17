@@ -16,7 +16,9 @@ app.use(express.json());
 
 //Managing post requests from DialogFlow
 app.use(bodyParser.json());
-var myminitest = require('./dialogflow/routes/dialogflowRoutes.js')(app)
+var dialogflow2 = require('./dialogflow/routes/dialogflowRoutes.js')
+dialogflow2.dialogflow2_post_requests(app, express)
+//var myminitest = require('./dialogflow/routes/dialogflowRoutes.js')(app)
 var dialogflowapp = require('./dialogflow/manage_d_post_req.js')
 dialogflowapp.dialogflow_post_requests(app, express, {WebhookClient, Card, Suggestion})
 
@@ -44,7 +46,8 @@ app.get('/api',(req,res) => {
 
 // Returns the userType defined by the chatbot
 app.get('/api/usertype',(req,res) => {
-    if (dialogflowapp.user_type==='landlord'){
+    res.send(dialogflow2.UserType)
+    /*if (dialogflowapp.user_type==='landlord'){
         res.send({userType: "Landlord"});
     }else if (dialogflowapp.user_type==='renter'){
         res.send({userType: "Renter"});
@@ -52,6 +55,7 @@ app.get('/api/usertype',(req,res) => {
     else{
         res.send({userType: "UNKNOWN"});
     }
+    */
 });
 
 //Insert new json item into DB
